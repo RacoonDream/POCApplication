@@ -23,7 +23,7 @@
     class="alert alert-danger">
       {{ postErrorMessage }}
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="SubscriptionSelection">Subscription</label>
       <select class="form-control" id="SubscriptionSelection" name="subsOption"
        [(ngModel)]="eventObject.subscriptionType">
@@ -31,8 +31,64 @@
 
 
       </select>
-    </div>
+    </div> -->
+    <p> Toggle button</p>
+    <button type="button" class="btn btn-primary" name="singleModel"
+        [(ngModel)]="singleModel" btnCheckbox
+        btnCheckboxTrue="On" btnCheckboxFalse="Off">
+       {{singleModel}}
+      </button>
 
+      <p> User Interface Style</p>
+      <div class="form-group">
+        <div class="btn-group" btnRadioGroup [(ngModel)]="eventObject.interfaceStyle" name="interfaceStyle">
+          <label class="btn btn-success" btnRadio="light"
+                 tabindex="0" role="button">light</label>
+          <label class="btn btn-success" btnRadio="medium"
+                 tabindex="0" role="button">Medium</label>
+          <label class="btn btn-success" btnRadio="dark"
+                 tabindex="0" role="button">Dark</label>
+        </div>
+        <br>
+        <pre class="card card-block card-header">{{eventObject.interfaceStyle || 'null'}}</pre>
+<div class="btn-group">
+  <label class="btn btn-primary" [(ngModel)]="eventObject.interfaceStyle" name="interfaceStyle"
+         btnRadio="light" tabindex="0" role="button">light</label>
+  <label class="btn btn-primary" [(ngModel)]="eventObject.interfaceStyle" name="interfaceStyle"
+         btnRadio="medium" tabindex="0" role="button">medium</label>
+  <label class="btn btn-primary" [(ngModel)]="eventObject.interfaceStyle" name="interfaceStyle"
+         btnRadio="dark" tabindex="0" role="button">dark</label>
+</div>
+      </div>
+
+      <div class=form-group col-md-4>
+        <label for="startDate">Date controls</label>
+        Date Selected:  {{ startDate}}
+        <input type="text"
+        placeholder="Start Date"
+        class="form-control"
+        [(ngModel)]="startDate"
+        name="startDate"
+        id="startDate"
+        bsDatepicker>
+
+<br>
+        <input type="text"
+           placeholder="Daterangepicker"
+           class="form-control"
+           [(ngModel)]="startDate"
+           name="startDate"
+           id="startDate"
+           bsDaterangepicker>
+      </div>
+
+      <p> Rating - add name attribute to use form controls - v imp</p>
+      <div class="form-group">
+        <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadOnly" name="rate"></rating>
+        <div class="card">
+            <pre class="card-block card-header" style="margin:5px 0;">Rate: <b>{{rate}}</b> </pre>
+        </div>
+      </div>
   </form>
   </div>
 
