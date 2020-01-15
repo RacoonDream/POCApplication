@@ -1,0 +1,42 @@
+
+<div class="container">
+  <h5> Event Details</h5>
+  <h6> Demo of validation happening when form  is submitted</h6>
+
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+    <div class="form-group">
+      <label for=name>Name  </label>
+      <input id="name" name="name" class="form-control" [(ngModel)]="eventObject.name"
+     required
+     (blur)="onBlur(nameField)"
+     #nameField="ngModel"
+     [class.field-error]="form.submitted && nameField.invalid">
+    </div>
+<div [hidden]="!form.submitted || nameField.valid"
+  class="alert alert-danger">Enter a Name</div>
+    <button class="btn btn-primary">Send</button>
+
+
+    <br>
+    <div [hidden]="!postError"
+    class="alert alert-danger">
+      {{ postErrorMessage }}
+    </div>
+    <div class="form-group">
+      <label for="SubscriptionSelection">Subscription</label>
+      <select class="form-control" id="SubscriptionSelection" name="subsOption"
+       [(ngModel)]="eventObject.subscriptionType">
+        <option *ngFor="let type of subscriptionTypes">{{ type }}</option>
+
+
+      </select>
+    </div>
+
+  </form>
+  </div>
+
+
+
+
+
